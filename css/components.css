@@ -1,0 +1,393 @@
+/* ================================== */
+/* == Component Styles ============== */
+/* ================================== */
+
+/* Color Wheel */
+.color-wheel {
+    width: var(--color-wheel-size);
+    height: var(--color-wheel-size);
+    max-width: 300px; /* Example: Prevents it from becoming too large */
+    min-width: 150px; /* Example: Ensures a minimum interactive size */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--highlight-color);
+    outline: none;
+    transition: filter 0.3s;
+    background: linear-gradient(45deg, #ff0099, #493240); /* Consider theming */
+}
+
+.color-wheel:hover {
+    filter: brightness(1.2);
+}
+
+.color-wheel:focus {
+    outline: 2px solid var(--color-active-border);
+}
+
+/* Preview Box */
+.preview-box {
+    width: 100px; /* Keep initial size, can adjust with media queries */
+    height: 100px;
+    min-width: 50px; /* Ensure a minimum size */
+    min-height: 50px;
+    border: 2px solid var(--color-glass-border);
+    box-shadow: var(--color-glass-shadow);
+    border-radius: var(--border-radius);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    margin-top: var(--spacing-sm);
+    font-size: 0.875rem; /* Using rem for better scalability */
+    text-align: center;
+}
+
+/* Color Selections */
+.color-selections {
+    margin-bottom: 1.5em;
+}
+
+.color-selections > div {
+    margin-bottom: 0.5em;
+}
+
+.selection {
+    padding: 0.625em; /* Using em for padding */
+    border: 2px solid var(--color-glass-border);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.selection:focus-within,
+.selection:hover {
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 10px var(--highlight-color);
+}
+
+.selection--active {
+    border-color: var(--color-active-border);
+    box-shadow: 0 0 10px var(--color-active-border);
+}
+
+.section-header {
+    display: flex; /* Enable flexbox */
+    justify-content: space-between; /* Title to the left, button to the right */
+    align-items: center; /* Vertically align items in the header*/
+    margin-bottom: 0.5em;
+}
+
+.section-title {
+    margin-bottom: 0; /* Remove title specific bottom margin*/
+    flex-grow: 1; /* Allows the title to take up remaining space, while the minimize button will float to the right*/
+    text-align: center; /*ensure the section title is still aliged to left for design consistency */
+}
+
+.color-swatch {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--bg-color-dark);
+    transition: transform 0.2s;
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+}
+
+#recent-colors-container {
+    display: flex;
+    gap: 0.3125em; /* Using em for gap */
+    margin-top: 0.3125em; /* Using em for margin */
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Or center if preferred */
+}
+
+#recent-colors-container li {
+    margin: 0.125em; /* Using em for margin */
+}
+
+/* Color Adjustment Section */
+.color-adjustment-section .adjustments,
+.gradient-section .gradient-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+/* Input Slider General Style */
+input[type="range"] {
+    flex-grow: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 0.5em; /* Using em for height */
+    border-radius: 0.25em; /* Using em for border-radius */
+    background: #555;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0.9375em; /* Using em for width */
+    height: 0.9375em; /* Using em for height */
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: pointer;
+    box-shadow: var(--color-thumb-shadow);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 0.9375em; /* Using em for width */
+    height: 0.9375em; /* Using em for height */
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: pointer;
+    box-shadow: var(--color-thumb-shadow);
+}
+
+/* Select Dropdown */
+select {
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border: 1px solid var(--accent-color);
+    background-color: #333;
+    color: var(--text-color-dark);
+}
+
+/* Buttons */
+.button {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--color-button-bg-light);
+    color: var(--text-color-dark);
+    transition: all 0.3s;
+    box-shadow: 0 0 10px var(--highlight-color);
+}
+
+.button:hover {
+    background-color: var(--color-button-hover-bg-light);
+    box-shadow: 0 0 20px var(--highlight-color);
+}
+
+/* AI Suggestions Panel */
+.ai-suggestions-panel {
+    margin-top: var(--spacing-sm);
+    padding: 1.5em;
+    border: 2px solid var(--color-glass-border);
+    border-radius: var(--border-radius);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--text-color-dark);
+    display: none;
+    box-shadow: 0 0 15px var(--shadow-color);
+}
+
+.ai-suggestions-panel[aria-hidden="false"] {
+    display: block;
+}
+
+.ai-suggestions-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(3.125em, 1fr)); /* Using em for minmax */
+    gap: 0.625em; /* Using em for gap */
+}
+
+.ai-suggestion {
+    height: 3.125em; /* Using em for height */
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 0 10px var(--shadow-color);
+    transition: box-shadow 0.3s;
+}
+
+.ai-suggestion:hover {
+    box-shadow: 0 0 15px var(--highlight-color);
+}
+
+/* Color Display Section */
+.color-display-section {
+    margin-top: 1.5em;
+    border: 2px solid var(--color-glass-border);
+    border-radius: var(--border-radius);
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px var(--shadow-color);
+    padding: 1.5em;
+}
+
+.color-display-section p {
+    margin: 0.5em 0;
+    font-size: 1rem;
+}
+
+#color-display span {
+    font-weight: bold;
+    color: var(--accent-color);
+    text-shadow: 0 0 3px var(--accent-color);
+}
+
+/* New Hamburger Menu Styles */
+.hamburger-menu {
+    position: absolute;
+    top: 10px;
+    right: 2vw;
+    z-index: 1000;
+}
+
+#hamburger-icon {
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+#hamburger-icon:hover {
+    color: var(--highlight-color);
+}
+
+.minimized-tabs-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--bg-color-dark);
+    border: 1px solid var(--accent-color);
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 200px;
+    box-shadow: 2px 2px 5px var(--shadow-color);
+    transform: translateX(0%); /* Start at 0% */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.minimized-tabs-container[aria-hidden="false"] {
+    display: flex;/* Show when aria-hidden is false */
+    transform: translateX(-10px); /* Shift it into view (adjust the value as needed) */
+}
+
+.minimized-tab-button {
+    background-color: #444;
+    color: var(--text-color-dark);
+    border: none;
+    padding: 0.3125em 0.625em; /* Using em for padding */
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    text-align: left;
+    width: 100%;
+}
+
+.minimized-tab-button:hover {
+    background-color: #666;
+}
+
+/* Minimize Button */
+.minimize-button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: var(--text-color-dark);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.minimize-button:hover {
+    opacity: 1;
+}
+
+/* New Combined Controls Container */
+.combined-controls-section {
+    display: flex; /* Use flexbox to organize internal container*/
+    flex-direction: column; /* Layout vertically */
+}
+.combined-controls-inner {
+  display: flex; /* This will arrange the child containers (sections) in a row*/
+  flex-wrap: wrap; /* Let the containers move onto new lines */
+  gap: 15px;  /* adds a visual break */
+}
+
+
+.combined-controls-section .section-container {
+  flex: 1;  /* lets children grow or shrink to fit in this contaner */
+  min-width: 250px; /* Sets minimum width of the child sections*/
+    margin: 0; /* Removes bottom margin from children elements*/
+}
+
+/* Resetting Specific Margins inside Combined Container
+   This makes sure that it is aligned with the main body layout, the container controls spacing
+*/
+.combined-controls-section .section-container .section-header,
+.combined-controls-section .section-container .control-row
+{
+    margin-bottom: 0.5em;
+}
+
+.combined-controls-section .section-container fieldset{
+   padding:0 1em;
+    margin-bottom: 0.5em;
+}
+
+
+/* Media query to change to column layout at small screens*/
+@media (max-width: 600px) {
+    .combined-controls-inner {
+        flex-direction: column; /* Switch to column for small screens*/
+        flex-wrap: nowrap;  /*Prevent new rows on small screens */
+    }
+      .combined-controls-section .section-container{
+          min-width:auto
+      }
+}
+
+/*General Styles that should be made to sections to prevent default styling.*/
+/* this sets elements with the section container to behave without borders */
+.section-container.color-adjustment-section {
+  border: none;
+}
+.section-container.opacity-section {
+ border:none;
+}
+ .section-container.gradient-section{
+  border: none;
+}
+
+/* ========================================= */
+/* Component-Specific Media Queries         */
+/* ========================================= */
+
+@media (max-width: 600px) {
+    .preview-box {
+        width: 70px;
+        height: 70px;
+    }
+
+    .color-wheel {
+        --color-wheel-size: 180px; /* Adjust variable for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-suggestions-list {
+        grid-template-columns: repeat(auto-fit, minmax(2.5em, 1fr)); /* Further adjust minmax */
+    }
+}
