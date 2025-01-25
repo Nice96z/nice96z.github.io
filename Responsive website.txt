@@ -1,0 +1,50 @@
+/* ========================================= */
+/*          Responsive Design             */
+/* ========================================= */
+
+@media (max-width: 599px) { /* Styles for small phones */
+    .hamburger-menu {
+        top: 5px;
+        right: 5px;
+    }
+    #hamburger-icon {
+        font-size: 1.2em;
+    }
+    .control-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .control-row label {
+        display: block;
+        margin-bottom: 0.25em;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px) { /* Styles for tablets */
+    .main-section {
+        flex-direction: row;
+    }
+    .color-wheel {
+        flex: 1;
+    }
+    .preview-box {
+        flex: 1;
+    }
+    .control-row {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) { /* Styles for small desktops */
+    .color-picker {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1201px) { /* Styles for large desktops */
+    .color-picker {
+        width: 70%;
+        max-width: 1400px;
+    }
+}
