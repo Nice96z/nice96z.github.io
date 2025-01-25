@@ -46,3 +46,96 @@
     align-items: stretch;
 }
 
+/* New Combined Controls Container */
+.combined-controls-section {
+    display: flex; /* Use flexbox to organize internal container*/
+    flex-direction: column; /* Layout vertically */
+}
+.combined-controls-inner {
+  display: flex; /* This will arrange the child containers (sections) in a row*/
+  flex-wrap: wrap; /* Let the containers move onto new lines */
+  gap: 15px;  /* adds a visual break */
+}
+
+
+.combined-controls-section .section-container {
+  flex: 1;  /* lets children grow or shrink to fit in this contaner */
+  min-width: 250px; /* Sets minimum width of the child sections*/
+    margin: 0; /* Removes bottom margin from children elements*/
+}
+
+/* Resetting Specific Margins inside Combined Container
+   This makes sure that it is aligned with the main body layout, the container controls spacing
+*/
+.combined-controls-section .section-container .section-header,
+.combined-controls-section .section-container .control-row
+{
+    margin-bottom: 0.5em;
+}
+
+.combined-controls-section .section-container fieldset{
+   padding:0 1em;
+    margin-bottom: 0.5em;
+}
+
+
+/* Media query to change to column layout at small screens*/
+@media (max-width: 600px) {
+    .combined-controls-inner {
+        flex-direction: column; /* Switch to column for small screens*/
+        flex-wrap: nowrap;  /*Prevent new rows on small screens */
+    }
+      .combined-controls-section .section-container{
+          min-width:auto
+      }
+}
+
+/*General Styles that should be made to sections to prevent default styling.*/
+/* this sets elements with the section container to behave without borders */
+.section-container.color-adjustment-section {
+  border: none;
+}
+.section-container.opacity-section {
+ border:none;
+}
+ .section-container.gradient-section{
+  border: none;
+}
+
+/* New Combined Selection Container */
+.combined-selections-section {
+    display: flex; /* Use flexbox to organize internal container*/
+    flex-direction: column; /* Layout vertically */
+  }
+  .combined-selections-inner {
+      display: flex; /* This will arrange the child containers (sections) in a row*/
+    flex-wrap: wrap; /* Let the containers move onto new lines */
+    gap: 15px; /* adds a visual break */
+  }
+  
+  .combined-selections-section .section-container {
+      flex: 1;  /* lets children grow or shrink to fit in this container */
+      min-width: 250px; /* Sets minimum width of the child sections*/
+      margin: 0; /* Removes bottom margin from children elements*/
+  }
+  
+  /* Resetting Specific Margins inside Combined Container
+     This makes sure that it is aligned with the main body layout, the container controls spacing
+  */
+  .combined-selections-section .section-container .section-header,
+  .combined-selections-section .section-container .control-row
+  {
+      margin-bottom: 0.5em;
+  }
+  
+  
+  /* Media query to change to column layout at small screens*/
+  @media (max-width: 600px) {
+      .combined-selections-inner {
+        flex-direction: column; /* Switch to column for small screens*/
+      flex-wrap: nowrap;  /*Prevent new rows on small screens */
+      }
+        .combined-selections-section .section-container{
+          min-width: auto
+        }
+  }
