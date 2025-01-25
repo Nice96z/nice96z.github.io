@@ -50,3 +50,20 @@ body::before {
     text-shadow: 0 0 3px var(--accent-color);
 }
 
+/* Additional rule for hiding cursor and canvas cursor element*/
+.hide-cursor {
+    cursor: none;
+ }
+ 
+ #custom-cursor {
+     position: fixed;
+     pointer-events: none;
+     width: 20px; /* adjust the initial radius of your custom circle*/
+     height: 20px;
+     border-radius: 50%;
+     background-color: transparent; /* Make the element itself invisible initially, color applied via the javascript handler.*/
+     border: 2px solid black;
+     transform: translate(-50%, -50%);/* Position from the center */
+     z-index: 1000;
+     /* transition: background-color 0.15s; */ /* transition not needed now but might add if you desire for your custom cursor*/
+ }
