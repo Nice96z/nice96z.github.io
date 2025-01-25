@@ -4,17 +4,16 @@
 
 /* Color Wheel */
 .color-wheel {
-    width: var(--color-wheel-size);
-    height: var(--color-wheel-size);
-    max-width: 300px; /* Example: Prevents it from becoming too large */
-    min-width: 150px; /* Example: Ensures a minimum interactive size */
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 0 15px var(--highlight-color);
-    outline: none;
-    transition: filter 0.3s;
-    background: linear-gradient(45deg, #ff0099, #493240); /* Consider theming */
-}
+    /* Uses percentage so it is proportional*/
+     width: clamp(150px, 25vw, 300px); /* Adjusted for small to mid sizes of a window or mobile.*/
+    height: clamp(150px, 25vw, 300px);  /* Ensure wheel's aspect ratio on any device. */
+     border-radius: 50%; /* This maintains circle shape always*/
+      cursor: pointer;
+      box-shadow: 0 0 15px var(--highlight-color);
+      outline: none;
+      transition: filter 0.3s;
+      background: linear-gradient(45deg, #ff0099, #493240); /* Consider theming */
+  }
 
 .color-wheel:hover {
     filter: brightness(1.2);
@@ -26,15 +25,16 @@
 
 /* Preview Box */
 .preview-box {
-    width: 100px; /* Keep initial size, can adjust with media queries */
-    height: 100px;
-    min-width: 50px; /* Ensure a minimum size */
-    min-height: 50px;
-    border: 2px solid var(--color-glass-border);
-    box-shadow: var(--color-glass-shadow);
-    border-radius: var(--border-radius);
-    background: rgba(0, 0, 0, 0.7);
-}
+    width: clamp(50px, 15vw, 100px);
+     height: clamp(50px, 15vw, 100px);
+   /* Remove  min-width: 50px; / Ensure a minimum size */
+     /* Remove  min-height: 50px; */
+     border: 2px solid var(--color-glass-border);
+     box-shadow: var(--color-glass-shadow);
+     border-radius: var(--border-radius);
+     background: rgba(0, 0, 0, 0.7);
+   
+ }
 
 /* Loading Indicator */
 .loading-indicator {
@@ -89,15 +89,13 @@
 }
 
 .color-swatch {
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
-    min-height: 30px;
+    width: 3em;
+    height: 3em;
     border-radius: 50%;
     cursor: pointer;
-    border: 2px solid var(--bg-color-dark);
+      border: 2px solid var(--bg-color-dark);
     transition: transform 0.2s;
-}
+  }
 
 .color-swatch:hover {
     transform: scale(1.1);
@@ -263,7 +261,7 @@ select {
 .minimized-tabs-container {
     position: absolute;
     top: 100%;
-    left: 0;
+    right: 0;  /* Align to right so the transformation has room */
     background-color: var(--bg-color-dark);
     border: 1px solid var(--accent-color);
     border-top: none;
@@ -272,15 +270,20 @@ select {
     display: none;
     flex-direction: column;
     gap: 5px;
-    min-width: 200px;
+     min-width: 200px; /* minimum space needed  */
+   max-width: 200px;
     box-shadow: 2px 2px 5px var(--shadow-color);
     transform: translateX(0%); /* Start at 0% */
     transition: transform 0.3s ease-in-out; /* Smooth transition */
+   overflow: hidden; /* Prevent internal horizontal scrollbar if content goes over width */
+     z-index: 999; /* Lower than hamburger Icon to see above anything if clicked first. */
+    text-align:left; /* Make sure text does not spread over the page, only needs text specific css.*/
+    /* Other styles as per your current code */
 }
 
 .minimized-tabs-container[aria-hidden="false"] {
     display: flex;/* Show when aria-hidden is false */
-    transform: translateX(-10px); /* Shift it into view (adjust the value as needed) */
+     transform: translateX(calc(-10% + 10px));/* Shift it to left to sit where needed while being aligned with other UI elements.*/
 }
 
 .minimized-tab-button {
@@ -294,6 +297,9 @@ select {
     transition: background-color 0.3s ease;
     text-align: left;
     width: 100%;
+        white-space: nowrap; /* Prevents tab content wrapping.*/
+    overflow: hidden;  /*hides excess of width */
+      text-overflow: ellipsis; /* Adds ... */
 }
 
 .minimized-tab-button:hover {
@@ -313,27 +319,4 @@ select {
 
 .minimize-button:hover {
     opacity: 1;
-}
-
-
-
-/* ========================================= */
-/* Component-Specific Media Queries         */
-/* ========================================= */
-
-@media (max-width: 600px) {
-    .preview-box {
-        width: 70px;
-        height: 70px;
-    }
-
-    .color-wheel {
-        --color-wheel-size: 180px; /* Adjust variable for smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .ai-suggestions-list {
-        grid-template-columns: repeat(auto-fit, minmax(2.5em, 1fr)); /* Further adjust minmax */
-    }
 }

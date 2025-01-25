@@ -1,0 +1,70 @@
+/* =========================================
+Component-Specific Media Queries
+======================================== */
+
+/* Small screens (max-width: 600px) */
+@media (max-width: 600px) {
+  /* Preview box */
+  .preview-box {
+    width: clamp(40px, 10vw, 70px);
+    height: clamp(40px, 10vw, 70px);
+  }
+
+  /* Color wheel */
+  .color-wheel {
+    width: clamp(130px, 20vw, 180px);
+    height: clamp(130px, 20vw, 180px);
+  }
+
+  /* Combined controls */
+  .combined-controls-inner {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .combined-controls-section .section-container {
+    min-width: auto;
+  }
+}
+
+/* Medium screens (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Minimized tabs container */
+  .minimized-tabs-container {
+    max-width: 220px;
+    min-width: 160px;
+  }
+}
+
+/* Small tablet screens (max-width: 576px) */
+@media (max-width: 576px) {
+  /* Minimized tabs container */
+  .minimized-tabs-container {
+    max-width: 200px;
+    min-width: 140px;
+  }
+}
+
+/* Mobile screens (max-width: 480px) */
+@media (max-width: 480px) {
+  /* Minimized tabs container */
+  .minimized-tabs-container {
+    max-width: 180px;
+    min-width: 120px;
+  }
+
+  /* AI suggestions list */
+  .ai-suggestions-list {
+    grid-template-columns: repeat(auto-fit, minmax(2.5em, 1fr));
+  }
+}
+
+/* Extra small screens (max-width: 380px) */
+@media (max-width: 380px) {
+  /* Minimized tabs container */
+  .minimized-tabs-container {
+    max-width: 160px;
+    min-width: 100px;
+    font-size: 0.9rem;
+  }
+}
