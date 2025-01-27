@@ -320,3 +320,18 @@ select {
 .minimize-button:hover {
     opacity: 1;
 }
+
+/* Maximize Button */
+.maximize-button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: var(--text-color-dark);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.maximize-button:hover {
+    opacity: 1;
+}
