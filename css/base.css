@@ -11,7 +11,7 @@ body {
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
     position: relative; /* For background animation */
-    height: 100vh; /* Ensure full viewport height */
+    min-height: 100vh; /* Ensure full viewport height */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,7 +38,7 @@ body::before {
 /* Typography */
 .color-picker-title, .section-title {
     margin-bottom: 1em; /* Match example's spacing */
-    font-size: 24px;
+    font-size: 1.5rem; /* Use responsive units */
     text-align: center;
     text-shadow: 0 0 5px var(--accent-color); /* Add text shadow */
 }
@@ -46,24 +46,47 @@ body::before {
 .sub-section-title {
     margin-top: 0;
     margin-bottom: 0.5em; /* Adjust spacing */
-    font-size: 18px;
+    font-size: 1.125rem; /* Use responsive units */
     text-shadow: 0 0 3px var(--accent-color);
 }
 
 /* Additional rule for hiding cursor and canvas cursor element*/
 .hide-cursor {
     cursor: none;
- }
- 
- #custom-cursor {
-     position: fixed;
-     pointer-events: none;
-     width: 20px; /* adjust the initial radius of your custom circle*/
-     height: 20px;
-     border-radius: 50%;
-     background-color: transparent; /* Make the element itself invisible initially, color applied via the javascript handler.*/
-     border: 2px solid black;
-     transform: translate(-50%, -50%);/* Position from the center */
-     z-index: 1000;
-     /* transition: background-color 0.15s; */ /* transition not needed now but might add if you desire for your custom cursor*/
- }
+}
+
+#custom-cursor {
+    position: fixed;
+    pointer-events: none;
+    width: 20px; /* adjust the initial radius of your custom circle*/
+    height: 20px;
+    border-radius: 50%;
+    background-color: transparent; /* Make the element itself invisible initially, color applied via the javascript handler.*/
+    border: 2px solid black;
+    transform: translate(-50%, -50%);/* Position from the center */
+    z-index: 1000;
+    /* transition: background-color 0.15s; */ /* transition not needed now but might add if you desire for your custom cursor*/
+}
+
+/* Responsive adjustments */
+@media (min-width: 576px) {
+    .color-picker-title, .section-title {
+        font-size: 2rem; /* Increase font size for larger screens */
+    }
+
+    .sub-section-title {
+        font-size: 1.25rem; /* Increase font size for larger screens */
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        flex-direction: row; /* Change layout direction for larger screens */
+        justify-content: space-between;
+    }
+
+    .main-section, .combined-selections-section, .combined-controls-section {
+        flex: 1;
+        margin: 10px;
+    }
+}
