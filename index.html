@@ -136,9 +136,148 @@
                 </fieldset>
             </section>
             
-            <!-- Continue with other sections similarly -->
+            <section class="opacity-section section-container" data-section-id="opacity-section">
+                <div class="section-header">
+                    <h2 class="section-title">Opacity</h2>
+                    <button class="minimize-button" aria-label="Minimize Opacity">
+                        −</button>
+                </div>
+                    <div class="control-row">
+                        <label for="opacity">Opacity:</label>
+                        <input type="range" id="opacity" min="0" max="1" step="0.01" value="1"
+                               aria-label="Opacity" aria-valuemin="0" aria-valuemax="1" aria-valuenow="1"/>
+                    </div>
+              </section>
+        
+                  <section class="gradient-section section-container" data-section-id="gradient-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Gradient</h2>
+                        <button class="minimize-button" aria-label="Minimize Gradient">
+                            −</button>
+                    </div>
+                      <div class="gradient-controls">
+                        <div class="control-row">
+                            <label for="gradient-type">Select Gradient Type:</label>
+                            <select id="gradient-type" aria-label="Gradient Type">
+                                <option value="linear">Linear</option>
+                                <option value="radial">Radial</option>
+                                <option value="conic">Conic</option>
+                            </select>
+                        </div>
+                        <div class="control-row">
+                            <label for="gradient-direction-select">Gradient Direction:</label>
+                            <select id="gradient-direction-select" aria-label="Gradient Direction">
+                                <option value="to right">To Right</option>
+                                <option value="to left">To Left</option>
+                                <option value="to top">To Top</option>
+                                <option value="to bottom">To Bottom</option>
+                                <option value="to top right">To Top Right</option>
+                                <option value="to top left">To Top Left</option>
+                                <option value="to bottom right">To Bottom Right</option>
+                                <option value="to bottom left">To Bottom Left</option>
+                            </select>
+                        </div>
+                      </div>
+                    </section>
         </div>
     </section>
+    <section class="harmonies-section section-container" aria-live="polite" data-section-id="harmonies-section">
+        <div class="section-header">
+            <h2 class="section-title">Color Harmonies</h2>
+            <button class="minimize-button" aria-label="Minimize Color Harmonies">
+                −</button>
+        </div>
+        <button id="generate-harmonies" class="button">Generate Color Harmonies</button>
+        <div id="color-harmonies"></div>
+    </section>
+
+    <section class="accessibility-section section-container" data-section-id="accessibility-section">
+        <div class="section-header">
+            <h2 class="section-title">Color Accessibility Checker</h2>
+            <button class="minimize-button" aria-label="Minimize Accessibility Checker">
+                −</button>
+        </div>
+        <div class="controls">
+            <div class="control-row">
+                <label for="contrast-bg">Background Color:</label>
+                <input type="color" id="contrast-bg" value="#ffffff">
+            </div>
+            <button id="check-contrast" class="button">Check Contrast</button>
+            <p id="contrast-result" aria-live="polite"></p>
+            <p id="accessibility-level" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <section class="palette-section section-container" aria-live="polite" data-section-id="palette-section">
+        <div class="section-header">
+            <h2 class="section-title">Palette Generators</h2>
+            <button class="minimize-button" aria-label="Minimize Palette Generators">
+                −</button>
+        </div>
+        <button id="generate-palette" class="button">Generate Analogous Palette</button>
+        <div id="generated-palette"></div>
+    </section>
+
+    <section class="customizable-preview-section section-container" data-section-id="customizable-preview-section">
+        <div class="section-header">
+            <h2 class="section-title">Customizable Preview</h2>
+            <button class="minimize-button" aria-label="Minimize Customizable Preview">
+                −</button>
+        </div>
+        <div id="custom-preview-box" class="preview-box" aria-live="polite"></div>
+    </section>
+
+    <section class="formats-section section-container" aria-live="polite" data-section-id="formats-section">
+        <div class="section-header">
+            <h2 class="section-title">Dynamic Color Formats</h2>
+            <button class="minimize-button" aria-label="Minimize Dynamic Color Formats">
+                −</button>
+        </div>
+        <div id="color-formats"></div>
+    </section>
+
+    <section class="saved-palettes-section section-container" aria-live="polite" data-section-id="saved-palettes-section">
+        <div class="section-header">
+            <h2 class="section-title">User Saved Palettes</h2>
+            <button class="minimize-button" aria-label="Minimize User Saved Palettes">
+                −</button>
+        </div>
+        <div id="saved-palettes"></div>
+        <button id="save-palette" class="button">Save Palette</button>
+    </section>
+
+    <section class="ai-suggestions-panel section-container" id="ai-suggestions-panel" aria-hidden="true" data-section-id="ai-suggestions-panel">
+        <div class="section-header">
+            <h2 class="section-title">AI Color Suggestions</h2>
+            <button class="minimize-button" aria-label="Minimize AI Color Suggestions">
+                −</button>
+        </div>
+        <div id="ai-suggestions-list"></div>
+        <button id="generate-ai-suggestions" class="button">Generate AI Suggestions</button>
+
+        <template id="ai-suggestion-item">
+            <div class="ai-suggestion" tabindex="0"></div>
+        </template>
+    </section>
+
+    <section class="export-section section-container" data-section-id="export-section">
+        <div class="section-header">
+            <h2 class="section-title">Export & Share</h2>
+            <button class="minimize-button" aria-label="Minimize Export & Share">
+                −</button>
+        </div>
+        <button id="export-json" class="button">Export as JSON</button>
+        <button id="export-scss" class="button">Export as SCSS</button>
+        <button id="copy-colors" class="button">Copy Colors</button>
+    </section>
+
+    <section class="theme-controls-section section-container" data-section-id="theme-controls-section">
+        <div class="section-header">
+            <h2 class="section-title">Theme Controls</h2>
+            <button id="toggle-theme" class="button" aria-label="Toggle Dark Mode">Toggle Dark Mode</button>
+        </div>
+    </section>
+
   </main>
   <script type="module" src="script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
